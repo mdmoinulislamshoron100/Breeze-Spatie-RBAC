@@ -1,0 +1,101 @@
+@extends('layouts.guest')
+
+@section('title', 'Login')
+
+@section('auth-content')
+    <div class="wrapper">
+        <div class="d-flex align-items-center justify-content-center my-5">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
+                    <div class="col mx-auto">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="border p-4 rounded">
+
+                                    <div class="text-center mb-4">
+                                        <h3>Sign in</h3>
+                                        <p>
+                                            Don't have an account yet?
+                                            <a href="{{ route('register') }}">Sign up here</a>
+                                        </p>
+                                    </div>
+
+                                    <div class="d-grid">
+                                        <a class="btn my-4 shadow-sm btn-white" href="{{ route('social.redirect','google') }}"> <span
+                                                class="d-flex justify-content-center align-items-center">
+                                                <img class="me-2"
+                                                    src="{{ asset('backend/assets/images/icons/search.svg') }}" width="16"
+                                                    alt="Image Description">
+                                                <span>Sign in with Google</span>
+                                            </span>
+                                        </a>
+                                    </div>
+
+                                    <div class="login-separater text-center mb-4"> <span>OR SIGN IN WITH EMAIL</span>
+                                        <hr>
+                                    </div>
+
+                                    <div class="form-body">
+                                        <form method="POST" action="{{ route('login') }}" class="row g-2">
+                                            @csrf
+
+                                            <!-- Email -->
+                                            <div class="col-12">
+                                                <label class="form-label">Email</label>
+                                                <input type="email" name="email"
+                                                    class="form-control @error('email') is-invalid @enderror"
+                                                    value="{{ old('email') }}" placeholder="Enter your email"
+                                                    autocomplete="username">
+                                                @error('email')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
+                                            <!-- Password -->
+                                            <div class="col-12">
+                                                <label class="form-label">Password</label>
+                                                <div class="input-group">
+                                                    <input type="password" name="password"
+                                                        class="form-control border-end-0 @error('password') is-invalid @enderror"
+                                                        placeholder="Enter password" autocomplete="new-password">
+                                                    <span class="input-group-text bg-transparent toggle-password">
+                                                        <i class="bx bx-hide"></i>
+                                                    </span>
+                                                </div>
+                                                @error('password')
+                                                    <div class="text-danger small">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
+                                            <div class="col-md-6">
+												<div class="form-check form-switch">
+													<input class="form-check-input" name="remember" type="checkbox" id="remember_me">
+													<label class="form-check-label" for="remember_me">Remember Me</label>
+												</div>
+											</div>
+           
+                                            <div class="col-md-6 text-end">
+                                                @if (Route::has('password.request'))
+                                                    <a href="{{ route('password.request') }}">Forgot Password ?</a>
+                                                @endif
+											</div>
+
+                                            <!-- Submit -->
+                                            <div class="col-12">
+                                                <div class="d-grid">
+                                                    <button type="submit" class="btn btn-primary"><i class="bx bxs-lock-open"></i>Sign in</button>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
