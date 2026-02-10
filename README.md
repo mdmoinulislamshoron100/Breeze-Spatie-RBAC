@@ -134,8 +134,8 @@ Note: You can create multiple roles and give access to permission roles wise.
 
 <h4>Demo: </h4>  
 
-<img src="public/p1.png" style="height:200px; width:400px"/>
-<img src="public/p2.png" style="height:200px; width:400px"/>
-<img src="public/p3.png" style="height:200px; width:400px"/>
-<img src="public/p4.png" style="height:200px; width:400px"/>
+<img src="public/p1.png" style="height:300px; width:100%"/>
+<img src="public/p2.png" style="height:300px; width:100%"/>
+<img src="public/p3.png" style="height:300px; width:100%"/>
+<img src="public/p4.png" style="height:300px; width:100%"/>
 
